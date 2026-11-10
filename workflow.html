@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LabourSphere Workflow</title>
+<style>
+:root{--ink:#0F2A3D;--teal:#0E7C7B;--teal-l:#E3F2F1;--amber:#E8A33D;--amber-l:#FCF3E1;--red:#C9503A;--red-l:#FBEAE6;--blue:#3B6FB6;--blue-l:#E8F0FA;--bg:#F5F7F9;--line:#CBD5DE;--text:#1B2B38;--muted:#5E7183}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
+header{background:var(--ink);color:#fff;padding:16px clamp(16px,4vw,40px);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header b{font-size:1.1rem} header a{color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;background:rgba(255,255,255,.12);padding:8px 14px;border-radius:8px;margin-left:6px}
+main{max-width:980px;margin:0 auto;padding:28px 16px 60px}
+h1{color:var(--ink);font-size:clamp(1.5rem,4vw,2rem);margin:0 0 6px;letter-spacing:-.01em}
+h2{color:var(--ink);font-size:1.2rem;margin:44px 0 14px}
+.sub{color:var(--muted);margin:0 0 18px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;background:#fff;border:1px solid #E2E8EE;border-radius:12px;padding:12px 16px;margin-bottom:26px;font-size:.88rem;font-weight:600}
+.legend span{display:flex;align-items:center;gap:8px}
+.legend i{width:16px;height:16px;border-radius:5px;display:block}
+.flow{display:flex;flex-direction:column;align-items:center}
+.box{width:min(100%,430px);background:#fff;border-radius:14px;padding:14px 18px;border:1px solid #E2E8EE;border-left:7px solid var(--teal);box-shadow:0 2px 10px rgba(15,42,61,.06)}
+.box b{display:block;color:var(--ink)} .box span{font-size:.87rem;color:var(--muted)}
+.box small{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.auto{border-left-color:var(--teal)} .auto small{color:var(--teal)}
+.ai{border-left-color:var(--blue)} .ai small{color:var(--blue)}
+.human{border-left-color:var(--amber)} .human small{color:#9A6410}
+.gate{border-left-color:var(--red);background:var(--red-l)} .gate small{color:var(--red)}
+.arrow{width:2px;height:26px;background:var(--line);position:relative;margin:2px 0 8px}
+.arrow:after{content:"";position:absolute;bottom:-6px;left:-5px;border:6px solid transparent;border-top-color:var(--line);border-bottom:0}
+.decision{background:var(--ink);color:#fff;font-weight:700;padding:12px 26px;border-radius:99px;text-align:center}
+.branches{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;margin-top:4px}
+.branch{display:flex;flex-direction:column;align-items:center;border-radius:16px;padding:14px 12px 16px;border:2px dashed var(--line)}
+.branch .box{width:100%}
+.tag{font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;padding:5px 14px;border-radius:99px;margin-bottom:12px}
+.low .tag{background:#E4F4EC;color:#2B8F62} .med .tag{background:var(--amber-l);color:#9A6410} .high .tag{background:var(--red-l);color:var(--red)}
+.branch .arrow{height:18px}
+@media(max-width:780px){.branches{grid-template-columns:1fr}}
+.layers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.layer{background:#fff;border:1px solid #E2E8EE;border-radius:12px;padding:14px 16px}
+.layer b{color:var(--ink);display:block} .layer span{font-size:.86rem;color:var(--muted)}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #E2E8EE;font-size:.92rem}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid #E2E8EE;vertical-align:top}
+th{background:var(--ink);color:#fff;font-weight:600} tr:last-child td{border-bottom:0}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px}
+.scroll{overflow-x:auto}
+@media print{header a{display:none}.box,.layer{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><b>LabourSphere &middot; Workflow Chart</b><div><a href="index.html">Demo</a><a href="pitch-deck.html">Pitch Deck</a></div></header>
+<main>
+<h1>The customer journey</h1>
+<p class="sub">From first visit to finished outcome: what runs automatically, where AI assists, and where a person must be involved.</p>
+
+<div class="legend">
+ <span><i style="background:var(--teal)"></i>Automated</span>
+ <span><i style="background:var(--blue)"></i>AI-assisted, with safeguards</span>
+ <span><i style="background:var(--amber)"></i>Human professional</span>
+ <span><i style="background:var(--red)"></i>Human approval mandatory</span>
+</div>
+
+<div class="flow">
+ <div class="box auto"><small>Automated</small><b>1. Discover</b><span>Free guides, articles, videos and social content bring people to LabourSphere.</span></div>
+ <div class="arrow"></div>
+ <div class="box ai"><small>AI-assisted</small><b>2. Identify the issue</b><span>The Issue Checker asks a few structured questions to understand the problem.</span></div>
+ <div class="arrow"></div>
+ <div class="box ai"><small>AI-assisted</small><b>3. General guidance</b><span>Plain-language steps drawn only from the approved knowledge base.</span></div>
+ <div class="arrow"></div>
+ <div class="decision">How serious is the matter?</div>
+ <div class="arrow"></div>
+
+ <div class="branches">
+  <div class="branch low">
+   <div class="tag">Low risk</div>
+   <div class="box auto"><small>Automated</small><b>Free guide</b><span>Self-help content answers the question.</span></div>
+   <div class="arrow"></div>
+   <div class="box auto"><small>Automated</small><b>Stay in touch</b><span>Optional sign-up for updates and new guides.</span></div>
+  </div>
+  <div class="branch med">
+   <div class="tag">Medium risk</div>
+   <div class="box auto"><small>Automated</small><b>Recommend a product</b><span>Template, toolkit or checklist that fits the issue.</span></div>
+   <div class="arrow"></div>
+   <div class="box auto"><small>Automated</small><b>Payment</b><span>Online checkout. Receipt sent instantly.</span></div>
+   <div class="arrow"></div>
+   <div class="box ai"><small>AI-assisted</small><b>Intake and document</b><span>Customer fills in details. Document is generated from an approved template.</span></div>
+  </div>
+  <div class="branch high">
+   <div class="tag">High risk</div>
+   <div class="box gate"><small>Human approval mandatory</small><b>Escalate</b><span>Sensitive or complex matters are flagged for a professional. No AI answer is given.</span></div>
+   <div class="arrow"></div>
+   <div class="box auto"><small>Automated</small><b>Booking and payment</b><span>Customer picks a time and pays. Intake form is sent.</span></div>
+   <div class="arrow"></div>
+   <div class="box human"><small>Human professional</small><b>Consultation</b><span>Assessment, judgement and tailored advice.</span></div>
+  </div>
+ </div>
+
+ <div class="arrow" style="margin-top:14px"></div>
+ <div class="box auto"><small>Automated</small><b>Follow-up</b><span>Check-in message, feedback request and relevant next offers.</span></div>
+ <div class="arrow"></div>
+ <div class="box auto"><small>Automated</small><b>Record and report</b><span>Every step is logged to the CRM and shown on the owner dashboard.</span></div>
+</div>
+
+<h2>What sits behind the journey</h2>
+<div class="layers">
+ <div class="layer"><b>Website and app</b><span>Works on phone and computer. The front door for every customer.</span></div>
+ <div class="layer"><b>Knowledge base</b><span>Legislation, case law, LabourSphere methods and templates. Version-controlled.</span></div>
+ <div class="layer"><b>AI assistant</b><span>Retrieves from approved sources only. Escalates when unsure.</span></div>
+ <div class="layer"><b>Payments and booking</b><span>Checkout, receipts, calendar and reminders.</span></div>
+ <div class="layer"><b>Document engine</b><span>Fills approved templates with customer details.</span></div>
+ <div class="layer"><b>CRM and analytics</b><span>Leads, orders, follow-ups and business reporting in one place.</span></div>
+</div>
+
+<h2>Who does what</h2>
+<div class="scroll">
+<table>
+ <tr><th>Activity</th><th>Handled by</th><th>Human involvement</th></tr>
+ <tr><td>Publishing educational content</td><td><span class="dot" style="background:var(--blue)"></span>AI drafts</td><td>Approved before publishing</td></tr>
+ <tr><td>Lead capture and qualification</td><td><span class="dot" style="background:var(--teal)"></span>Automated</td><td>None</td></tr>
+ <tr><td>General guidance</td><td><span class="dot" style="background:var(--blue)"></span>AI-assisted</td><td>Content pre-approved</td></tr>
+ <tr><td>Product sales and delivery</td><td><span class="dot" style="background:var(--teal)"></span>Automated</td><td>None</td></tr>
+ <tr><td>Document generation</td><td><span class="dot" style="background:var(--blue)"></span>AI-assisted</td><td>Templates pre-approved</td></tr>
+ <tr><td>Booking, payment, reminders</td><td><span class="dot" style="background:var(--teal)"></span>Automated</td><td>None</td></tr>
+ <tr><td>High-risk or sensitive matters</td><td><span class="dot" style="background:var(--red)"></span>Escalated</td><td><b>Mandatory</b></td></tr>
+ <tr><td>Consultations and bespoke advisory</td><td><span class="dot" style="background:var(--amber)"></span>Professional</td><td><b>Always</b></td></tr>
+ <tr><td>Follow-up and reporting</td><td><span class="dot" style="background:var(--teal)"></span>Automated</td><td>Reviewed monthly</td></tr>
+</table>
+</div>
+</main>
+</body>
+</html>
