@@ -108,6 +108,7 @@ details.g div{padding:0 18px 16px}
 .radio input{width:auto;min-height:0}
 #toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:10px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;z-index:30;max-width:90vw;text-align:center}
 #toast.on{opacity:1}
+.credit{text-align:center;font-size:.8rem;color:var(--muted);margin:40px 0 0}
 .demo-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 @media print{body *{visibility:hidden}.paper,.paper *{visibility:visible}.paper{position:absolute;left:0;top:0;width:100%;border:0;box-shadow:none}}
 </style>
@@ -219,7 +220,7 @@ function nav(){
  $('#side').innerHTML=`<a class="logo" href="#home"><b>LS</b>LabourSphere</a>`+
   NAV.map(([k,l],i)=>(i===5?'<div class="lbl">Your account</div>':i===6?'<div class="lbl">Business</div>':'')+`<a class="n ${view===k?'on':''}" href="#${k}">${ic(k)}${l}</a>`).join('')+
   `<div class="lbl">Presentation</div><a class="n" href="workflow.html">${ic('flow')}Workflow Chart</a><a class="n" href="pitch-deck.html">${ic('deck')}Pitch Deck</a>
-  <div class="foot">Offline demo. No login.<br>Data stays on this device.</div>`;
+  <div class="foot">Offline demo. No login.<br>Data stays on this device.<br><br>Developed by STARKITE Technologies 2026</div>`;
  $('#top').innerHTML=`<a class="logo" href="#home"><b>LS</b>LabourSphere</a><div class="r"><a class="${view==='mine'?'on':''}" href="#mine">My Items</a><a class="${view==='owner'?'on':''}" href="#owner">Owner</a></div>`;
  $('#tabs').innerHTML=NAV.slice(0,5).map(([k,l])=>`<a class="${view===k?'on':''}" href="#${k}">${ic(k)}${l.replace('Issue ','')}</a>`).join('');
 }
@@ -382,7 +383,7 @@ V.owner=()=>{
  </div>`;
 };
 
-function render(){nav();$('#main').innerHTML=V[view]()}
+function render(){nav();$('#main').innerHTML=V[view]()+'<p class="credit">Developed by STARKITE Technologies 2026</p>'}
 
 /* ---------- actions ---------- */
 function checkout(id){

@@ -34,7 +34,7 @@ h2{color:var(--ink);font-size:1.2rem;margin:44px 0 14px}
 .tag{font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;padding:5px 14px;border-radius:99px;margin-bottom:12px}
 .low .tag{background:#E4F4EC;color:#2B8F62} .med .tag{background:var(--amber-l);color:#9A6410} .high .tag{background:var(--red-l);color:var(--red)}
 .branch .arrow{height:18px}
-@media(max-width:780px){.branches{grid-template-columns:1fr}}
+@media screen and (max-width:780px){.branches{grid-template-columns:1fr}}
 .layers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 .layer{background:#fff;border:1px solid #E2E8EE;border-radius:12px;padding:14px 16px}
 .layer b{color:var(--ink);display:block} .layer span{font-size:.86rem;color:var(--muted)}
@@ -43,11 +43,12 @@ th,td{text-align:left;padding:11px 14px;border-bottom:1px solid #E2E8EE;vertical
 th{background:var(--ink);color:#fff;font-weight:600} tr:last-child td{border-bottom:0}
 .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px}
 .scroll{overflow-x:auto}
-@media print{header a{display:none}.box,.layer{break-inside:avoid}}
+@page{size:A4;margin:10mm}
+@media print{header a{display:none}body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:13px}main{padding:14px 0 0;max-width:none}.box,.layer,.branch,tr{break-inside:avoid}.box{box-shadow:none;padding:9px 12px}.arrow{height:16px}h2{margin-top:26px;break-after:avoid}}
 </style>
 </head>
 <body>
-<header><b>LabourSphere &middot; Workflow Chart</b><div><a href="index.html">Demo</a><a href="pitch-deck.html">Pitch Deck</a></div></header>
+<header><b>LabourSphere &middot; Workflow Chart</b><div><a href="index.html">Demo</a><a href="pitch-deck.html">Pitch Deck</a><a href="LabourSphere-Workflow.pdf">PDF</a></div></header>
 <main>
 <h1>The customer journey</h1>
 <p class="sub">From first visit to finished outcome: what runs automatically, where AI assists, and where a person must be involved.</p>
@@ -125,6 +126,7 @@ th{background:var(--ink);color:#fff;font-weight:600} tr:last-child td{border-bot
  <tr><td>Follow-up and reporting</td><td><span class="dot" style="background:var(--teal)"></span>Automated</td><td>Reviewed monthly</td></tr>
 </table>
 </div>
+<p style="text-align:center;font-size:.8rem;color:var(--muted);margin:36px 0 0">Developed by STARKITE Technologies 2026</p>
 </main>
 </body>
 </html>
